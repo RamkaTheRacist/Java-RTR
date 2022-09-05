@@ -19,37 +19,34 @@ public class task1 {
         int[] array = new int[b + 1];
         array[a] = 1;
         for (int index = a + 1; index <= b; index++) {
-            if (index < c) {
-                if (index % d == 0) {
-                    array[index] = array[index] + array[index / d];
-                }
-            } else {
-                if (index % d == 0) {
-                    array[index] = array[index - c] + array[index / d];
-                } else {
-                    array[index] = array[index - c];
-                }
+            if ((index % d == 0) && (index - c >=0)){
+                array[index] = array[index - c] + array[index / d];     
+            }else if(index - c >=0){
+                array[index] = array[index - c];
+            }else if(index % d == 0){
+                array[index] = array[index / d];
             }
+            
         }
         return array;
     }
 
     static String bestWay(int a, int b, int c, int d) {
         int tmp = b;
-        String result = Integer.toString(a);
+        String result = "";
         while (tmp != a) {
             if (tmp % d == 0) {
                 tmp /= d;
-                result += " *" + Integer.toString(d);
+                result += " cmd2";
             } else {
                 tmp -= c;
-                result += " +" + Integer.toString(c);
+                result += " cmd1";
             }
         }
         String[] splited = result.split(" ");
         result = splited[0];
         for (int i = 0; i < splited.length - 1; i++) {
-            result += "" + splited[(splited.length - 1) - i];
+            result += " " + splited[(splited.length - 1) - i];
         }
 
         return result;
@@ -61,17 +58,24 @@ public class task1 {
         int firstNumber = iScanner.nextInt();
         System.out.printf("Second number: ");
         int secondNumber = iScanner.nextInt();
-        System.out.printf("Plus number: ");
+        System.out.printf("Plus number (cmd1): ");
         int plusThis = iScanner.nextInt();
-        System.out.printf("Multiply number: ");
+        System.out.printf("Multiply number (cmd2): ");
         int multiplyThis = iScanner.nextInt();
         iScanner.close();
-        var res = solve(firstNumber, secondNumber, plusThis, multiplyThis);
-        if (res[secondNumber] == 0)
-            System.out.printf("From %d to %d is no way", firstNumber, secondNumber);
-        else {
-            System.out.printf("From %d to %d the best way is: %s", firstNumber, secondNumber,
-                    bestWay(firstNumber, secondNumber, plusThis, multiplyThis));
+        if((firstNumber > secondNumber) || (multiplyThis < 2) & (plusThis < 1) ) System.out.printf("From %d to %d is no way", firstNumber, secondNumber);
+        else{
+            var res = solve(firstNumber, secondNumber, plusThis, multiplyThis);
+            if ((res[secondNumber] == 0))
+                System.out.printf("From %d to %d is no way", firstNumber, secondNumber);
+            else {
+                for (int i = 0; i < res.length; i++) {
+                    System.out.printf("To %d is %d ways\n", i, res[i]);
+                }
+                System.out.printf("From %d to %d the best way is: %s\n", firstNumber, secondNumber,
+                        bestWay(firstNumber, secondNumber, plusThis, multiplyThis));
+                
+            }
         }
 
     }
