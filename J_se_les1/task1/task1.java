@@ -10,7 +10,9 @@
 *Подумать над тем, как сделать минимальное количество команд */
 
 package Java.J_se_les1.task1;
+
 import java.util.Scanner;
+
 public class task1 {
 
     static int[] solve(int a, int b, int c, int d) {
@@ -68,7 +70,8 @@ public class task1 {
         if (res[secondNumber] == 0)
             System.out.printf("From %d to %d is no way", firstNumber, secondNumber);
         else {
-            System.out.printf("From %d to %d the best way is: %s", firstNumber, secondNumber, bestWay(firstNumber, secondNumber, plusThis, multiplyThis));
+            System.out.printf("From %d to %d the best way is: %s", firstNumber, secondNumber,
+                    bestWay(firstNumber, secondNumber, plusThis, multiplyThis));
         }
 
     }
