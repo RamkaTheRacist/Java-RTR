@@ -10,7 +10,7 @@
 *Подумать над тем, как сделать минимальное количество команд */
 
 package Java.J_se_les1.task1;
-
+import java.util.Scanner;
 public class task1 {
 
     static int[] solve(int a, int b, int c, int d) {
@@ -54,15 +54,21 @@ public class task1 {
     }
 
     public static void main(String[] args) {
-        int a = 1;
-        int b = 25;
-        int c = 10;
-        int d = 4;
-        var res = solve(a, b, c, d);
-        if (res[b] == 0)
-            System.out.printf("From %d to %d is no way", a, b);
+        Scanner iScanner = new Scanner(System.in);
+        System.out.printf("First number: ");
+        int firstNumber = iScanner.nextInt();
+        System.out.printf("Second number: ");
+        int secondNumber = iScanner.nextInt();
+        System.out.printf("Plus number: ");
+        int plusThis = iScanner.nextInt();
+        System.out.printf("Multiply number: ");
+        int multiplyThis = iScanner.nextInt();
+        iScanner.close();
+        var res = solve(firstNumber, secondNumber, plusThis, multiplyThis);
+        if (res[secondNumber] == 0)
+            System.out.printf("From %d to %d is no way", firstNumber, secondNumber);
         else {
-            System.out.printf("From %d to %d best way is: %s", a, b, bestWay(a, b, c, d));
+            System.out.printf("From %d to %d the best way is: %s", firstNumber, secondNumber, bestWay(firstNumber, secondNumber, plusThis, multiplyThis));
         }
 
     }
