@@ -19,14 +19,14 @@ public class task1 {
         int[] array = new int[b + 1];
         array[a] = 1;
         for (int index = a + 1; index <= b; index++) {
-            if ((index % d == 0) && (index - c >=0)){
-                array[index] = array[index - c] + array[index / d];     
-            }else if(index - c >=0){
+            if ((index % d == 0) && (index - c >= 0)) {
+                array[index] = array[index - c] + array[index / d];
+            } else if (index - c >= 0) {
                 array[index] = array[index - c];
-            }else if(index % d == 0){
+            } else if (index % d == 0) {
                 array[index] = array[index / d];
             }
-            
+
         }
         return array;
     }
@@ -34,11 +34,18 @@ public class task1 {
     static String bestWay(int a, int b, int c, int d) {
         int tmp = b;
         String result = "";
-        while (tmp != a) {
-            if (tmp % d == 0) {
-                tmp /= d;
-                result += " cmd2";
-            } else {
+        if (d > 1) {
+            while (tmp != a) {
+                if (tmp % d == 0) {
+                    tmp /= d;
+                    result += " cmd2";
+                } else {
+                    tmp -= c;
+                    result += " cmd1";
+                }
+            }
+        } else {
+            while (tmp != a) {
                 tmp -= c;
                 result += " cmd1";
             }
@@ -63,8 +70,9 @@ public class task1 {
         System.out.printf("Multiply number (cmd2): ");
         int multiplyThis = iScanner.nextInt();
         iScanner.close();
-        if((firstNumber > secondNumber) || (multiplyThis < 2) & (plusThis < 1) ) System.out.printf("From %d to %d is no way", firstNumber, secondNumber);
-        else{
+        if ((firstNumber > secondNumber) || (multiplyThis < 2) & (plusThis < 1))
+            System.out.printf("From %d to %d is no way", firstNumber, secondNumber);
+        else {
             var res = solve(firstNumber, secondNumber, plusThis, multiplyThis);
             if ((res[secondNumber] == 0))
                 System.out.printf("From %d to %d is no way", firstNumber, secondNumber);
@@ -74,7 +82,7 @@ public class task1 {
                 }
                 System.out.printf("From %d to %d the best way is: %s\n", firstNumber, secondNumber,
                         bestWay(firstNumber, secondNumber, plusThis, multiplyThis));
-                
+
             }
         }
 
