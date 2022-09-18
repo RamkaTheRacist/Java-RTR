@@ -45,6 +45,15 @@ public class task1 {
             firstArrayTMP.add(firstArray[i]);
         for (int i = 0; i < secondArray.length; i++)
             secondArrayTMP.add(secondArray[i]);
+
+        ////////////////////////////////////////////////////////////////////////
+        
+            // int[] array = new int[] { 2, 3, 4, 1, 5, 6, 7, 8, 9, 1, 2, 8, 5 };
+            // ArrayList<Integer> list1 = new ArrayList<Integer>();
+            // for (int i = 0; i < array.length; i++)
+            //     list1.add(array[i]);
+            // System.out.println(list1.subList(0, 2));
+
             //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         System.out.println(firstArrayTMP);
         System.out.println(secondArrayTMP);
