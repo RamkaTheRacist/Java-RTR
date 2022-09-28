@@ -33,6 +33,7 @@ public class prog {
         System.out.println("RNL: ");
         printIT.printTreeRNL(mainTree, "");
         System.out.println();
-
-    }
+        System.out.println("For task1: ");
+        printForTask1.printTreeInLine(mainTree, "(");
+    }   // 1(2(4(8,9),5(10)),3(6,7))
 }
