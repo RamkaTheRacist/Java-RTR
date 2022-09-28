@@ -8,8 +8,6 @@ public class printIT {
                 printTreeNLR(tree.left, space + "\t");
                 printTreeNLR(tree.right, space + "\t");
             }
-        } else {
-            System.out.printf("%snil\n", space);
         }
     }
 
@@ -20,8 +18,6 @@ public class printIT {
                 printTreeNRL(tree.right, space + "\t");
                 printTreeNRL(tree.left, space + "\t");
             }
-        } else {
-            System.out.printf("%snil\n", space);
         }
     }
 

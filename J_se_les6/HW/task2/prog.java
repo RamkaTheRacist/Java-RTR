@@ -21,15 +21,18 @@ public class prog {
         leftLeft.left = leftLeftLeft;
         leftLeft.right = leftLeftRight;
         leftRight.left = leftRightLeft;
-
-        // printIT.printTreeNLR(mainTree, "");
-        // System.out.println();
-        // printIT.printTreeNRL(mainTree, "");
-        // System.out.println();
-        // printIT.printTreeLNR(mainTree, "");
-        // System.out.println();
-        // printIT.printTreeRNL(mainTree, "");
-        // System.out.println();
+        System.out.println("NLR: ");
+        printIT.printTreeNLR(mainTree, "");
+        System.out.println();
+        System.out.println("NRL: ");
+        printIT.printTreeNRL(mainTree, "");
+        System.out.println();
+        System.out.println("LNR: ");
+        printIT.printTreeLNR(mainTree, "");
+        System.out.println();
+        System.out.println("RNL: ");
+        printIT.printTreeRNL(mainTree, "");
+        System.out.println();
 
     }
 }
