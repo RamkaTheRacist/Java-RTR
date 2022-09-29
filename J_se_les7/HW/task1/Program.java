@@ -1,9 +1,10 @@
 package Java.J_se_les7.HW.task1;
 
 public class Program {
-    static void show(Base base){
-        System.out.println(base.toString()); 
+    static void show(Base base) {
+        System.out.println(base.toString());
     }
+
     public static void main(String[] args) {
         Base milk = new Milk("Домик в деревне", 100, 500, "ml", 1000, 2.5, "21.11.2022");
         Base soda = new Soda("Coca-Cola", 170, 15, "ml", 2);
