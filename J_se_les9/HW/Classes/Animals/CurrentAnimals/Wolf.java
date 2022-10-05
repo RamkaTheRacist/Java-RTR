@@ -19,9 +19,7 @@ public class Wolf extends Animal {
     @Override
     public String getInfo() {
         return String.format(
-                "Name: %s\nHight: %d\nWeight: %d\nEye color: %s\nLiving location: %s\nLocation date: %s\nLeader: %s\n",
-                getClass().getSimpleName(), getHight(), getWeight(), getEyeColor(), getLivingLoc(), getLocDate(),
-                bossOfThisGym);
+                "%sLeader: %s\n",super.getInfo(), bossOfThisGym);
     }
 
     public void getInfoIfBoss() {

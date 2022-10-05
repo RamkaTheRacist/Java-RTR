@@ -11,8 +11,6 @@ import Java.J_se_les9.HW.Classes.Animals.CurrentAnimals.Dog;
 import Java.J_se_les9.HW.Classes.Animals.CurrentAnimals.Stork;
 import Java.J_se_les9.HW.Classes.Animals.CurrentAnimals.Tiger;
 import Java.J_se_les9.HW.Classes.Animals.CurrentAnimals.Wolf;
-import Java.J_se_les9.HW.Interfaces.Iflying;
-import Java.J_se_les9.HW.Interfaces.Itrain;
 import Java.J_se_les9.HW.Interfaces.Iweasel;
 
 public class Zoo {
@@ -99,7 +97,7 @@ public class Zoo {
 
     public void infoAbout(int index) {
         if (index >= 0 & index < newZoo.size()) {
-            var tmp = newZoo.get(index);
+            BaseAnimal tmp = newZoo.get(index);
             System.out.println(tmp.getInfo());
 
         } else {
@@ -109,7 +107,7 @@ public class Zoo {
 
     public void makeSoundThis(int index) {
         if (index >= 0 & index < newZoo.size()) {
-            var tmp = newZoo.get(index);
+            BaseAnimal tmp = newZoo.get(index);
             tmp.makeSound();
 
         } else {
@@ -119,8 +117,8 @@ public class Zoo {
 
     public void trainAction(int index) {
         if (index >= 0 & index < newZoo.size()) {
-            if (newZoo.get(index) instanceof Itrain) {
-                Itrain tmp = (Itrain) newZoo.get(index);
+            if (newZoo.get(index) instanceof Dog) {
+                Dog tmp = (Dog) newZoo.get(index);
                 tmp.train();
             } else {
                 System.out.println("Error, this animal can`t be trained");
@@ -143,12 +141,10 @@ public class Zoo {
         }
     }
 
-
-
     public void flyAction(int index) {
         if (index >= 0 & index < newZoo.size()) {
-            if (newZoo.get(index) instanceof Iflying) {
-                Iflying tmp = (Iflying) newZoo.get(index);
+            if (newZoo.get(index) instanceof Bird) {
+                Bird tmp = (Bird) newZoo.get(index);
                 tmp.flying();
             } else {
                 System.out.println("Error, this animal can`t fly by itself");
@@ -161,14 +157,14 @@ public class Zoo {
 
     public void infoAll() {
         for (int i = 0; i < newZoo.size(); i++) {
-            var tmp = newZoo.get(i);
+            BaseAnimal tmp = newZoo.get(i);
             System.out.println(tmp.getInfo());
         }
     }
 
     public void makeSoundAll() {
         for (int i = 0; i < newZoo.size(); i++) {
-            var tmp = newZoo.get(i);
+            BaseAnimal tmp = newZoo.get(i);
             tmp.makeSound();
         }
     }

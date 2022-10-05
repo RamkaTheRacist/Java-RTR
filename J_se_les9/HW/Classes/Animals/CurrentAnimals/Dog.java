@@ -1,9 +1,8 @@
 package Java.J_se_les9.HW.Classes.Animals.CurrentAnimals;
 
 import Java.J_se_les9.HW.Classes.Animals.Pet;
-import Java.J_se_les9.HW.Interfaces.Itrain;
 
-public class Dog extends Pet implements Itrain{
+public class Dog extends Pet {
     private String training;
 
     public Dog(Integer hight, Integer weight, String eyeColor, String name, String breed, String grafted,
@@ -22,22 +21,12 @@ public class Dog extends Pet implements Itrain{
         System.out.printf("%s is barking\n", getName());
     }
 
-    @Override
-    public String getInfo() {
-        return String.format(
-                "Name: %s\nBreed: %s\nBD: %s\nHight: %d\nWeight: %d\nEye color: %s\nHair color: %s\nGrafted: %s\n",
-                getName(), getBreed(), getBD(), getHight(), getWeight(), getEyeColor(), getHairColor(), getGrafted());
-    }
-
     public String getInfoAboutTraining() {
         return training;
     }
 
-    @Override
     public void train() {
         System.out.printf("%s is too lazy now\n", getName());
     }
-
-
 
 }

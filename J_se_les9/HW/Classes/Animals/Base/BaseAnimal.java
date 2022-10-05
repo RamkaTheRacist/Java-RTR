@@ -1,9 +1,6 @@
 package Java.J_se_les9.HW.Classes.Animals.Base;
 
-import Java.J_se_les9.HW.Interfaces.IgetInfo;
-import Java.J_se_les9.HW.Interfaces.ImakeSound;
-
-public abstract class BaseAnimal implements IgetInfo, ImakeSound{
+public abstract class BaseAnimal{
     private Integer hight;
     private Integer weight;
     private String eyeColor;
@@ -25,5 +22,7 @@ public abstract class BaseAnimal implements IgetInfo, ImakeSound{
     protected String getEyeColor() {
         return eyeColor;
     }
+    public abstract String getInfo();
+    public abstract void makeSound();
 
 }

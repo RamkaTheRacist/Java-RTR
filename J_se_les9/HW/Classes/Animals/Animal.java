@@ -20,4 +20,11 @@ public abstract class Animal extends BaseAnimal {
         return locationData;
     }
 
+    @Override
+    public String getInfo() {
+        return String.format(
+                "Name: %s\nHight: %d\nWeight: %d\nEye color: %s\nLiving location: %s\nLocation date: %s\n",
+                getClass().getSimpleName(), getHight(), getWeight(), getEyeColor(), getLivingLoc(), getLocDate());
+    }
+
 }

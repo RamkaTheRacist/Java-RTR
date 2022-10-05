@@ -39,4 +39,14 @@ public abstract class Pet extends BaseAnimal implements Iweasel{
     protected String getBD() {
         return birthDay;
     }
+
+    @Override
+    public String getInfo() {
+        return String.format(
+                "Name: %s\nBreed: %s\nBD: %s\nHight: %d\nWeight: %d\nEye color: %s\nHair color: %s\nGrafted: %s\n",
+                getName(), getBreed(), getBD(), getHight(), getWeight(), getEyeColor(), getHairColor(), getGrafted());
+    }
+
+    public abstract void weasel();
+
 }

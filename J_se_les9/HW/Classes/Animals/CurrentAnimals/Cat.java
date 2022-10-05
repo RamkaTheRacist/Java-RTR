@@ -1,9 +1,8 @@
 package Java.J_se_les9.HW.Classes.Animals.CurrentAnimals;
 
 import Java.J_se_les9.HW.Classes.Animals.Pet;
-import Java.J_se_les9.HW.Interfaces.Ihairs;
 
-public class Cat extends Pet implements Ihairs{
+public class Cat extends Pet {
     private String hairs;
 
     public Cat(Integer hight, Integer weight, String eyeColor, String name, String breed, String grafted,
@@ -22,22 +21,6 @@ public class Cat extends Pet implements Ihairs{
         System.out.printf("%s is purring\n", getName());
     }
 
-    @Override
-    public String getInfo() {
-        if (getHairColor() != null) {
-            return String.format(
-                    "Name: %s\nBreed: %s\nBD: %s\nHight: %d\nWeight: %d\nEye color: %s\nHair color: %s\nGrafted: %s\n",
-                    getName(), getBreed(), getBD(), getHight(), getWeight(), getEyeColor(), getHairColor(),
-                    getGrafted());
-        } else {
-            return String.format(
-                    "Name: %s\nBreed: %s\nBD: %s\nHight: %d\nWeight: %d\nEye color: %s\nHairs: %s\nGrafted: %s\n",
-                    getName(), getBreed(), getBD(), getHight(), getWeight(), getEyeColor(), hairs, getGrafted());
-        }
-
-    }
-
-    @Override
     public void getInfoAboutHair() {
         System.out.printf("About %s`s hairs: %s\n", getName(), hairs);
     }
