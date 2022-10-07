@@ -1,7 +1,6 @@
 package Java.J_se_les9.HW.Classes.Zoo;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import Java.J_se_les9.HW.Classes.Animals.Bird;
 import Java.J_se_les9.HW.Classes.Animals.Base.BaseAnimal;
@@ -11,6 +10,7 @@ import Java.J_se_les9.HW.Classes.Animals.CurrentAnimals.Dog;
 import Java.J_se_les9.HW.Classes.Animals.CurrentAnimals.Stork;
 import Java.J_se_les9.HW.Classes.Animals.CurrentAnimals.Tiger;
 import Java.J_se_les9.HW.Classes.Animals.CurrentAnimals.Wolf;
+import Java.J_se_les9.HW.Classes.ReadData.ReadData;
 import Java.J_se_les9.HW.Interfaces.Iweasel;
 
 public class Zoo {
@@ -21,7 +21,6 @@ public class Zoo {
     Wolf wilf = new Wolf(52, 60, "White", "America", "30.12.2012", "null");
     Stork stork = new Stork(46, 8, "Brown");
     Chicken chicken = new Chicken(23, 4, "Black");
-    Scanner iScanner = new Scanner(System.in);
 
     public void addAnimalDefault() {
         newZoo.add(cat);
@@ -34,46 +33,60 @@ public class Zoo {
 
     public void addAnimal(int any) {
         if (any > 0 && any < 7) {
+            ReadData tmpForZoo = new ReadData();
             System.out.printf("Hight: \n");
-            int hight = iScanner.nextInt();
+            tmpForZoo.setIntValue();
+            int hight = tmpForZoo.getIntValue();
             System.out.printf("Weight: \n");
-            int weight = iScanner.nextInt();
+            tmpForZoo.setIntValue();
+            int weight = tmpForZoo.getIntValue();
             System.out.printf("Eye color: \n");
-            String as = iScanner.nextLine();
-            String eyeColor = iScanner.nextLine();
+            tmpForZoo.setStringValue();
+            tmpForZoo.setStringValue();
+            String eyeColor = tmpForZoo.getStringValue();
             if (any < 3) {
                 System.out.printf("Name: \n");
-                String name = iScanner.nextLine();
+                tmpForZoo.setStringValue();
+                String name = tmpForZoo.getStringValue();
                 System.out.printf("Breed: \n");
-                String breed = iScanner.nextLine();
+                tmpForZoo.setStringValue();
+                String breed = tmpForZoo.getStringValue();
                 System.out.printf("Grafted: \n");
-                String grafted = iScanner.nextLine();
+                tmpForZoo.setStringValue();
+                String grafted = tmpForZoo.getStringValue();
                 System.out.printf("Hair color: \n");
-                String hairColor = iScanner.nextLine();
+                tmpForZoo.setStringValue();
+                String hairColor = tmpForZoo.getStringValue();
                 System.out.printf("BD: \n");
-                String birthDay = iScanner.nextLine();
+                tmpForZoo.setStringValue();
+                String birthDay = tmpForZoo.getStringValue();
                 if (any == 1) {
                     System.out.printf("Has hair: \n");
-                    String hairs = iScanner.nextLine();
+                    tmpForZoo.setStringValue();
+                    String hairs = tmpForZoo.getStringValue();
                     Cat cat = new Cat(hight, weight, eyeColor, name, breed, grafted, hairColor, birthDay, hairs);
                     newZoo.add(cat);
                 } else {
                     System.out.printf("Has train: \n");
-                    String training = iScanner.nextLine();
+                    tmpForZoo.setStringValue();
+                    String training = tmpForZoo.getStringValue();
                     Dog dog = new Dog(hight, weight, eyeColor, name, breed, grafted, hairColor, birthDay, training);
                     newZoo.add(dog);
                 }
             } else if (any > 2 & any < 5) {
                 System.out.printf("Living location: \n");
-                String livingLoc = iScanner.nextLine();
+                tmpForZoo.setStringValue();
+                String livingLoc = tmpForZoo.getStringValue();
                 System.out.printf("Location Date: \n");
-                String locationDate = iScanner.nextLine();
+                tmpForZoo.setStringValue();
+                String locationDate = tmpForZoo.getStringValue();
                 if (any == 3) {
                     Tiger tiger = new Tiger(hight, weight, eyeColor, livingLoc, locationDate);
                     newZoo.add(tiger);
                 } else {
                     System.out.printf("Leader: \n");
-                    String bossOfThisGym = iScanner.nextLine();
+                    tmpForZoo.setStringValue();
+                    String bossOfThisGym = tmpForZoo.getStringValue();
                     Wolf wolf = new Wolf(hight, weight, eyeColor, livingLoc, locationDate, bossOfThisGym);
                     newZoo.add(wolf);
                 }

@@ -22,9 +22,8 @@ public abstract class Animal extends BaseAnimal {
 
     @Override
     public String getInfo() {
-        return String.format(
-                "Name: %s\nHight: %d\nWeight: %d\nEye color: %s\nLiving location: %s\nLocation date: %s\n",
-                getClass().getSimpleName(), getHight(), getWeight(), getEyeColor(), getLivingLoc(), getLocDate());
+        return String.format("%sLiving location: %s\nLocation date: %s\n", super.getInfo(), getLivingLoc(),
+                getLocDate());
     }
 
 }

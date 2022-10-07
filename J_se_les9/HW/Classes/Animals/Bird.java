@@ -20,11 +20,5 @@ public abstract class Bird extends BaseAnimal {
         hightOfFly = any;
     }
 
-    @Override
-    public String getInfo() {
-        return String.format("Name: %s\nHight: %d\nWeight: %d\nEye color: %s\n", getClass().getSimpleName(), getHight(),
-                getWeight(), getEyeColor());
-    }
-
     public abstract void flying();
 }

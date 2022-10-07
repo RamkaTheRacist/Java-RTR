@@ -1,8 +1,7 @@
 package Java.J_se_les9.HW.Classes.Animals.CurrentAnimals;
 
-import java.util.Scanner;
-
 import Java.J_se_les9.HW.Classes.Animals.Bird;
+import Java.J_se_les9.HW.Classes.ReadData.ReadData;
 
 public class Stork extends Bird {
     public Stork(Integer hight, Integer weight, String eyeColor) {
@@ -17,13 +16,15 @@ public class Stork extends Bird {
     @Override
     public void flying() {
         Boolean end = false;
-        Scanner iScanner = new Scanner(System.in);
+        ReadData tmpForFly = new ReadData();
         while (end == false) {
-            System.out.println("(1)Start to fly, (2)check current position or (0)leave?");
-            int choose = iScanner.nextInt();
+            System.out.println("(1)Set altitude for fly, (2)check current position or (0)leave?");
+            tmpForFly.setIntValue();
+            int choose = tmpForFly.getIntValue();
             if (choose == 1) {
                 System.out.println("Choose altitude: ");
-                int altitude = iScanner.nextInt();
+                tmpForFly.setIntValue();
+                int altitude = tmpForFly.getIntValue();
                 setHightOfFly(altitude);
             } else if (choose == 2) {
                 if (getHightOfFly() == null || getHightOfFly() < 1) {

@@ -1,6 +1,6 @@
 package Java.J_se_les9.HW.Classes.Animals.Base;
 
-public abstract class BaseAnimal{
+public abstract class BaseAnimal {
     private Integer hight;
     private Integer weight;
     private String eyeColor;
@@ -22,7 +22,12 @@ public abstract class BaseAnimal{
     protected String getEyeColor() {
         return eyeColor;
     }
-    public abstract String getInfo();
+
+    public String getInfo() {
+        return String.format("Type: %s\nHight: %d\nWeight: %d\nEye color: %s\n", getClass().getSimpleName(), getHight(),
+                getWeight(), getEyeColor());
+    }
+
     public abstract void makeSound();
 
 }

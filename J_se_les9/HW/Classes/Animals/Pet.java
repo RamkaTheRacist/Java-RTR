@@ -3,7 +3,7 @@ package Java.J_se_les9.HW.Classes.Animals;
 import Java.J_se_les9.HW.Classes.Animals.Base.BaseAnimal;
 import Java.J_se_les9.HW.Interfaces.Iweasel;
 
-public abstract class Pet extends BaseAnimal implements Iweasel{
+public abstract class Pet extends BaseAnimal implements Iweasel {
     private String name;
     private String breed;
     private String grafted;
@@ -42,9 +42,9 @@ public abstract class Pet extends BaseAnimal implements Iweasel{
 
     @Override
     public String getInfo() {
-        return String.format(
-                "Name: %s\nBreed: %s\nBD: %s\nHight: %d\nWeight: %d\nEye color: %s\nHair color: %s\nGrafted: %s\n",
-                getName(), getBreed(), getBD(), getHight(), getWeight(), getEyeColor(), getHairColor(), getGrafted());
+        return String.format("%sName: %s\nBreed: %s\nBD: %s\nHair color: %s\nGrafted: %s\n", super.getInfo(), getName(),
+                getBreed(), getBD(),
+                getHairColor(), getGrafted());
     }
 
     public abstract void weasel();
