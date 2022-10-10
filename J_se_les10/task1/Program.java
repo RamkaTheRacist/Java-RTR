@@ -6,7 +6,7 @@ import Java.J_se_les10.task1.Classes.Json.Manager;
 
 public class Program {
     public static void main(String[] args) throws IOException {
-        Manager any = new Manager("file.txt");
+        Manager any = new Manager("file.json");
         TestClass any2 = new TestClass("TestClass", 666);
         any.prnt();
         any.format("any1", any2);
