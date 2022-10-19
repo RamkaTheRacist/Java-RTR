@@ -114,7 +114,7 @@ public class Presenter {
     }
 
     public void save() {
-        model.saveAs();
+        model.save();
         view.saveSuccess();
     }
 

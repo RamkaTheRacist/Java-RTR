@@ -45,7 +45,7 @@ public class Model {
         }
     }
 
-    public void saveAs(){
+    public void save(){
         String type = getType(path);
         try (FileWriter writer = new FileWriter(path, false)) {
             if (type.equals("txt") || (type.equals("db"))) {
