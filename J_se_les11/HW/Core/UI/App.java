@@ -2,6 +2,13 @@ package Java.J_se_les11.HW.Core.UI;
 
 import Java.J_se_les11.HW.Core.Logic.MVP.IView;
 import Java.J_se_les11.HW.Core.Logic.MVP.Presenter;
+import Java.J_se_les11.HW.Core.Logic.RemoveLogic.ConsoleR;
+import Java.J_se_les11.HW.Core.Logic.RemoveLogic.IConsoleR;
+import Java.J_se_les11.HW.Core.Logic.SaveLogic.ConsoleS;
+import Java.J_se_les11.HW.Core.Logic.SaveLogic.IConsoleS;
+import Java.J_se_les11.HW.Core.Logic.UpdateLogic.ConsoleU;
+import Java.J_se_les11.HW.Core.Logic.UpdateLogic.IConsoleU;
+
 import java.util.Scanner;
 
 public class App {
@@ -9,8 +16,13 @@ public class App {
         System.out.print("\033[H\033[J");
         boolean end = false;
         IView view = new ConsoleUi();
+        IConsoleS consoleS = new ConsoleS();
+        IConsoleR consoleR = new ConsoleR();
+        IConsoleUIErr error = new ConsoleUIErr();
+        IConsoleU consoleU = new ConsoleU();
+        
         String path = "Java\\J_se_les11\\HW\\Files\\any.txt";
-        Presenter pres = new Presenter(path, view);
+        Presenter pres = new Presenter(path, view, consoleS,consoleR,consoleU,error);
         pres.loadFile();
         try (Scanner in = new Scanner(System.in)) {
             while (end == false) {

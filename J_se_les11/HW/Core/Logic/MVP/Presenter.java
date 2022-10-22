@@ -1,21 +1,41 @@
 package Java.J_se_les11.HW.Core.Logic.MVP;
 
 import Java.J_se_les11.HW.Core.Logic.Contact.Contact;
+import Java.J_se_les11.HW.Core.Logic.RemoveLogic.IConsoleR;
+import Java.J_se_les11.HW.Core.Logic.RemoveLogic.Remove;
+import Java.J_se_les11.HW.Core.Logic.SaveLogic.IConsoleS;
+import Java.J_se_les11.HW.Core.Logic.UpdateLogic.IConsoleU;
+import Java.J_se_les11.HW.Core.Logic.UpdateLogic.Update;
+import Java.J_se_les11.HW.Core.UI.IConsoleUIErr;
 
 public class Presenter {
     private Model model;
     private IView view;
+    private IConsoleS iconsoleS;
+    private IConsoleUIErr error;
+    private Remove remover;
+    private IConsoleR iremover;
+    private IConsoleU iconsoleU;
+    private Update updater;
 
-    public Presenter(String path, IView view) {
+    public Presenter(String path, IView view, IConsoleS iconsoleS, IConsoleR iremover, IConsoleU iconsoleU,
+            IConsoleUIErr error) {
         this.view = view;
+        this.iconsoleS = iconsoleS;
+        this.iremover = iremover;
+        this.error = error;
+        this.iconsoleU = iconsoleU;
         model = new Model(path);
+        remover = new Remove(model.currentBook(), model);
+        updater = new Update(model.currentBook(), model, view);
+
     }
 
     public void showAllContAsNumb() {
         if (model.currentBook().sizeOfBook() > 0) {
             view.showAllPos(model.currentBook().sizeOfBook());
         } else {
-            view.empty();
+            error.emptyError();
         }
         model.setIndex(0);
 
@@ -26,23 +46,17 @@ public class Presenter {
             model.setIndex(0);
             for (int i = 0; i < model.currentBook().sizeOfBook(); i++) {
                 model.setIndex(i);
-                var contact = model.currentContact();
-                view.setfName(contact.getfName());
-                view.setlName(contact.getlName());
-                view.setOrganisation(contact.getOrganisation());
-                view.setPhoneNumber(contact.getPhoneNumber());
-                view.setNote(contact.getNote());
+                showContact();
             }
-
         } else {
-            view.empty();
+            error.emptyError();
         }
         model.setIndex(0);
     }
 
     public void showContact() {
         if (model.currentBook().sizeOfBook() > 0) {
-            var contact = model.currentContact();
+            Contact contact = model.currentContact();
             view.showPosition(model.getIndex() + 1);
             view.setfName(contact.getfName());
             view.setlName(contact.getlName());
@@ -50,7 +64,7 @@ public class Presenter {
             view.setPhoneNumber(contact.getPhoneNumber());
             view.setNote(contact.getNote());
         } else {
-            view.empty();
+            error.emptyError();
         }
     }
 
@@ -59,18 +73,12 @@ public class Presenter {
             int index = view.searchIndex();
             if ((index >= 0) && (index < model.currentBook().sizeOfBook())) {
                 model.setIndex(index);
-                var contact = model.currentContact();
-                view.setfName(contact.getfName());
-                view.setlName(contact.getlName());
-                view.setOrganisation(contact.getOrganisation());
-                view.setPhoneNumber(contact.getPhoneNumber());
-                view.setNote(contact.getNote());
-
+                showContact();
             } else {
-                view.errorIndex();
+                error.errorIndex();
             }
         } else {
-            view.empty();
+            error.emptyError();
         }
         model.setIndex(0);
     }
@@ -79,7 +87,7 @@ public class Presenter {
         Contact tmp = new Contact(view.getfName(), view.getlName(), view.getOrganisation(),
                 view.getPhoneNumber(), view.getNote());
         if (model.currentBook().ifExist(tmp) == true) {
-            view.errorAdd();
+            error.errorAdd();
         } else {
             model.currentBook().add(tmp);
             view.addSuccess();
@@ -89,53 +97,33 @@ public class Presenter {
 
     public void remove() {
         if (model.currentBook().sizeOfBook() > 0) {
-            Contact contact = model.currentContact();
-            model.currentBook().remove(contact);
-            view.removeSuccess();
-            model.setIndex(model.getIndex());
+            remover.remove();
+            iremover.removeSuccess();
         } else {
-            view.empty();
+            error.emptyError();
         }
     }
 
     public void update() {
         if (model.currentBook().sizeOfBook() > 0) {
-            Contact contact = model.currentContact();
-            contact.setfName(view.getfName());
-            contact.setlName(view.getlName());
-            contact.setOrganisation(view.getOrganisation());
-            contact.setPhoneNumber(view.getPhoneNumber());
-            contact.setNote(view.getNote());
-            view.updateSuccess();
+            updater.update();
+            iconsoleU.updateSuccess();
         } else {
-            view.empty();
+            error.emptyError();
         }
 
     }
 
     public void save() {
         model.save();
-        view.saveSuccess();
+        iconsoleS.saveSuccess();
     }
 
     public void saveAs() {
-        int tmpType = view.chooseType();
-        String tmpName = view.chooseName();
-        String fileName = "";
+        String fileName = view.chooseName();
         String path = "Java\\J_se_les11\\HW\\Files\\";
-        switch (tmpType) {
-            case 1:
-                fileName = tmpName + ".txt";
-                break;
-            case 2:
-                fileName = tmpName + ".db";
-                break;
-            case 3:
-                fileName = tmpName + ".csv";
-                break;
-        }
-        model.saveAs(tmpType, path + fileName);
-        view.saveSuccess();
+        model.saveAs(fileName, path + fileName);
+        iconsoleS.saveSuccess();
     }
 
     public void next() {
