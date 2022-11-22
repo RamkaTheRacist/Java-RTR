@@ -32,7 +32,6 @@ namespace HW.Core.Presenter
                 Menu.ShowMenu();
                 choose = Input.GetCommand();
                 Factory.MakeOperation(Path,choose, Phonebook, Error, Output, OutSuc, Input);
-                //Factory.MakeOperation(path, choose, phonebook, error, output, outSuc, input);
             }
         }
 
